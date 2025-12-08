@@ -1,0 +1,5 @@
+{
+  "name": "Sistema de Gestión de Disponibilidad - RBAC",
+  "description": "Sistema completo para la gestión de disponibilidad de instructores con control de acceso basado en roles (Instructor, Admin, Super Admin), validación de horarios y reportes.",
+  "requestFramePermissions": []
+}
