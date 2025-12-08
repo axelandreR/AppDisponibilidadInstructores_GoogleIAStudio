@@ -89,7 +89,7 @@ const AvailabilityScheduler: React.FC<AvailabilitySchedulerProps> = ({
         return;
     }
 
-    const slotsArray = Array.from(selectedSlots);
+    const slotsArray: string[] = Array.from(selectedSlots);
     const validation = validateAvailability(slotsArray);
 
     if (!validation.valid) {

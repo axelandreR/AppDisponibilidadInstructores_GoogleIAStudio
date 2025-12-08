@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// URL base del backend (NestJS)
+// Base URL for the backend API
 const API_URL = 'http://localhost:3000/api/v1';
 
 export const api = axios.create({
@@ -10,7 +10,7 @@ export const api = axios.create({
   },
 });
 
-// Interceptor de Request: Inyectar Token
+// Request Interceptor: Inject Token
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -22,17 +22,15 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Interceptor de Response: Manejo global de errores (401)
+// Response Interceptor: Handle Global Errors
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Si el backend devuelve 401 (Unauthorized), significa token inválido o expirado
     if (error.response && error.response.status === 401) {
-      // Evitar loop infinito si ya estamos en login
-      if (!window.location.pathname.includes('/login')) {
+      // Token expired or invalid
+      if (!window.location.hash.includes('/login')) {
         localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        window.location.href = '/login';
+        // Optional: Redirect to login or handle session expiry
       }
     }
     return Promise.reject(error);
