@@ -7,11 +7,11 @@ export const GENERATE_TIME_SLOTS = (): string[] => {
   const slots: string[] = [];
   let hour = 7;
   let minute = 30;
-  
+
   while (hour < 22 || (hour === 22 && minute <= 30)) {
     const timeStr = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
     slots.push(timeStr);
-    
+
     minute += 30;
     if (minute === 60) {
       minute = 0;
@@ -24,12 +24,14 @@ export const GENERATE_TIME_SLOTS = (): string[] => {
 export const TIME_SLOTS_STRINGS = GENERATE_TIME_SLOTS();
 
 export const INITIAL_PERIOD: AcademicPeriod = {
-  id: '2024-1',
-  name: 'Ciclo Académico 2024-1',
-  startDate: '2024-03-01',
-  endDate: '2024-07-15',
-  isActive: true,
-  isOpenForSubmission: true,
+  id: '2026-1',
+  name: 'Ciclo Académico 2026-1',
+  startDate: '2026-03-15',
+  endDate: '2026-07-30',
+  isOpen: true, // Switch maestro administrativo
+  submissionStart: '2025-11-03',
+  submissionEnd: '2025-11-30',
+  windowsHistory: []
 };
 
 // Mock Users

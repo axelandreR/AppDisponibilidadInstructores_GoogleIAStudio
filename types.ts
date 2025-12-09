@@ -19,13 +19,23 @@ export interface User {
   };
 }
 
+export interface SubmissionWindow {
+  id: string;
+  startDate: string;
+  endDate: string;
+  openedBy: string; // User ID
+  createdAt: string;
+}
+
 export interface AcademicPeriod {
   id: string;
   name: string;
   startDate: string;
   endDate: string;
-  isActive: boolean;
-  isOpenForSubmission: boolean;
+  isOpen: boolean; // Master switch for submission
+  submissionStart?: string;
+  submissionEnd?: string;
+  windowsHistory: SubmissionWindow[];
 }
 
 export interface TimeSlot {
